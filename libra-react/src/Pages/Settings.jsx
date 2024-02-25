@@ -1,7 +1,6 @@
 import React from 'react';
 import Navbar from '../Components/Navbar';
 import Banner from '../Components/Banner';
-
 export default function Settings() {
   const portInt = (e)=> {
     const value = e.target.value.replace(/[^0-9]/g, "");
@@ -11,7 +10,7 @@ export default function Settings() {
     <>
       <Navbar/>
       <div className="page">
-        <Banner label="Submit">
+        <Banner label="Submit" showBtn="true">
           <input
             autoComplete="off"
             spellCheck="false"

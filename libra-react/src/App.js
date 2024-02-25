@@ -4,6 +4,8 @@ import SignUp from './Pages/SignUp';
 import Login from './Pages/Login';
 import {BrowserRouter as Router , Routes, Route} from 'react-router-dom';
 import Settings from './Pages/Settings';
+import Transaction from './Pages/Transaction';
+import Navbar from './Components/Navbar';
 function App() {
   return (
     <>
@@ -13,6 +15,7 @@ function App() {
           <Route path='signup' element={<SignUp />} />
           <Route path='login' element={<Login />} />
           <Route path='/' element={<Settings />} />
+          <Route path='transaction' element={<Transaction />} />
         </Routes>
       </Router>
     </>

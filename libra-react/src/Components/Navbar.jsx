@@ -1,17 +1,17 @@
 import React, { useState } from 'react';
 import 'primeicons/primeicons.css';
-import { NavLink,Link } from "react-router-dom";
+import { NavLink, Link, useLocation } from "react-router-dom";
 import Banner from './Banner';
-
 export default function Navbar() {
-  const [isOpen, setIsOpen] = useState(false)
+  const [isOpen, setIsOpen] = useState(false);
+  const location = useLocation();
   const showUserData = ()=>{
     setIsOpen(!isOpen)
   }
   return (
     <>
       <div className={isOpen ? 'user-data active' : 'user-data'}>
-        <Banner label="Logout">
+        <Banner label="Logout" showBtn="true">
           <input
             autoComplete="off"
             spellCheck="false"
@@ -28,11 +28,11 @@ export default function Navbar() {
         </Link>
         <div className='nav-links'>
           <ul>
-            <li>
-              <NavLink to="/">Home</NavLink>
+            <li className={location.pathname==='/'? 'active':''}>
+              <Link to="/">Settings</Link>
             </li>
-            <li>
-              <NavLink to="rooms">Rooms</NavLink>
+            <li className={location.pathname==='/transaction'? 'active':''}>
+              <Link to="transaction">Transaction</Link>
             </li>
           </ul>
         </div>
