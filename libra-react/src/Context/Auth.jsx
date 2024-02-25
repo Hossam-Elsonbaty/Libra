@@ -1,17 +1,52 @@
-import React,{createContext} from 'react';
-
+import React,{Children, createContext, useState} from 'react';
+import axios from 'axios';
 export const Auth = createContext(null);
-export default function Auth() {
 
+export function AuthProvider({children}) {
+  const [userToken, setUserToken] = useState();
+  const storedToken = Cookies.get('token');
+  const signUp =(fullName, userPhoneNumber, password) => {
+    axios.post('',{
+      fullName,
+      userPhoneNumber,
+      password
+    })
+    .then((response)=>{
+      console.log(response.data);
+    })
+    .catch((err)=>{
+      console.log(err);
+    })
+  }
   const login =()=> {
+    axios.post('',{
+      userName:'John213',
+      password:'256sdd6s2'
+    })
+    .then((response)=>{
+      console.log(response.data);
+      // Cookies.set('userToken', response.data.token, { expires: 7 });
+      Cookies.set('token', response.data.token, { expires: 7, secure: true, sameSite: 'strict', httpOnly: true });
+    })
+    .catch((err)=>{
+      console.log(err);
+    })
   }
   const logout =()=> {
-  }
-  const signUp =()=> {
+    axios.post('',{
+      userToken:"dsd656456"
+    })
+    .then((response)=>{
+      console.log(response.data);
+      Cookies.remove('token');
+    })
+    .catch((err)=>{
+      console.log(err);
+    })
   }
   return (
     <>
-      <Auth.Provider value={{login,logout,signUp}}></Auth.Provider>
+      <Auth.Provider value={{login,logout,signUp}}>{children}</Auth.Provider>
     </>
   )
 }

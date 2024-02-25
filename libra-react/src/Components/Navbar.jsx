@@ -1,7 +1,8 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import 'primeicons/primeicons.css';
 import { NavLink, Link, useLocation } from "react-router-dom";
 import Banner from './Banner';
+
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const location = useLocation();
