@@ -1,8 +1,16 @@
-import React from 'react';
+import React,{useState, useContext} from 'react';
 import logo from '../Images/Mobile login-bro.svg';
+import { Auth } from '../Context/Auth';
 
 export default function Login() {
-  const handleChange = (value) => console.log(value);
+  const  [phoneNumber, setPhoneNumber] = useState()
+  const  [password, setPassword] = useState()
+  const auth =useContext(Auth);
+  const {login} = auth;
+  const handleSubmit = (e)=> {
+    e.preventDefault();
+    console.log(phoneNumber, password);
+  }
   return (
     <>
       <div className="page" style={{height:'100dvh'}}>
@@ -10,13 +18,14 @@ export default function Login() {
           <img src={logo} />
           <h2>Login</h2>
           <form className="login-form">
-            <div className="username">
+            <div className="username" onSubmit={handleSubmit}>
               <input
                 autoComplete="off"
                 spellCheck="false"
                 className="control"
                 type="text"
-                placeholder="Username"
+                placeholder="Phone number"
+                onChange={(e)=>setPhoneNumber(e.target.value)}
               />
               <input
                 autoComplete="off"
@@ -24,9 +33,10 @@ export default function Login() {
                 className="control"
                 type="password"
                 placeholder="Password"
+                onChange={(e)=>setPassword(e.target.value)}
               />
             </div>
-            <button className="control" type="button">
+            <button className="control" type="submit">
               Login
             </button>
           </form>

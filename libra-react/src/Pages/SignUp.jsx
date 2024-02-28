@@ -3,11 +3,11 @@ import  {PasswordStrength}  from '../Components/PasswordInput';
 import logo from '../Images/logo.svg';
 import { Auth } from '../Context/Auth';
 export default function SignUp() {
-  const auth =useContext(Auth);
   const  [fullName, setFullName] = useState()
   const  [userPhoneNumber, setUserPhoneNumber] = useState()
   const  [password, setPassword] = useState()
-  // const {signUp}=auth;
+  const auth =useContext(Auth);
+  const {signUp} = auth;
   // console.log(signUp);
   // signUp()
   const handleSubmit = (e)=> {

@@ -19,10 +19,10 @@ export function AuthProvider({children}) {
       console.log(err);
     })
   }
-  const login =()=> {
+  const login =(phoneNumber, password)=> {
     axios.post('',{
-      userName:'John213',
-      password:'256sdd6s2'
+      phoneNumber,
+      password
     })
     .then((response)=>{
       console.log(response.data);
@@ -35,7 +35,7 @@ export function AuthProvider({children}) {
   }
   const logout =()=> {
     axios.post('',{
-      userToken:"dsd656456"
+      userToken:storedToken
     })
     .then((response)=>{
       console.log(response.data);
