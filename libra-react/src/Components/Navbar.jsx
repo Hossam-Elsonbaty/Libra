@@ -2,23 +2,29 @@ import React, { useState, useContext } from 'react';
 import 'primeicons/primeicons.css';
 import { NavLink, Link, useLocation } from "react-router-dom";
 import Banner from './Banner';
+import { Auth } from '../Context/Auth';
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const location = useLocation();
+  const auth =useContext(Auth);
+  const {logout} = auth;
   const showUserData = ()=>{
     setIsOpen(!isOpen)
   }
+  // const handleLogout = ()=> {
+  //   logout(localStorage.getItem('libraToken'))
+  // }
   return (
     <>
       <div className={isOpen ? 'user-data active' : 'user-data'}>
-        <Banner label="Logout" showBtn="true">
+        <Banner label="Logout" showBtn="true" handleButton={()=>logout(localStorage.getItem('libraToken'))}>
           <input
             autoComplete="off"
             spellCheck="false"
             className="control"
             type="text"
-            placeholder="Mohamed Ahmed"
+            placeholder={localStorage.getItem('fullName')}
             disabled
           />
         </Banner>

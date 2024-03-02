@@ -4,15 +4,13 @@ import logo from '../Images/logo.svg';
 import { Auth } from '../Context/Auth';
 export default function SignUp() {
   const  [fullName, setFullName] = useState()
-  const  [userPhoneNumber, setUserPhoneNumber] = useState()
+  const  [username, setUsername] = useState()
   const  [password, setPassword] = useState()
   const auth =useContext(Auth);
   const {signUp} = auth;
-  // console.log(signUp);
-  // signUp()
   const handleSubmit = (e)=> {
     e.preventDefault();
-    console.log(fullName, userPhoneNumber, password);
+    signUp(fullName, username, password);
   }
   const handleChange = (value) => setPassword(value);
   return (
@@ -36,8 +34,8 @@ export default function SignUp() {
                 spellCheck="false"
                 className="control"
                 type="text"
-                placeholder="Phone number"
-                onChange={(e)=>setUserPhoneNumber(e.target.value)}
+                placeholder="Username"
+                onChange={(e)=>setUsername(e.target.value)}
               />
               <div id="spinner" className="spinner"></div>
             </div>

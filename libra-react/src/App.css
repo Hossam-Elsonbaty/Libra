@@ -2,7 +2,6 @@
 * {
   box-sizing: border-box;
   margin: 0;
-  padding: 0;
   font-family: "Euclid Circular A", "Poppins";
 }
 
@@ -79,11 +78,21 @@
   text-align: center;
   letter-spacing: 2px;
 }
+.page .transaction-container .username .control-container {
+  display: flex;
+  flex-direction: column;
+  row-gap: 20px;
+}
 .page .transaction-container .username .control-container .col {
   display: flex;
   justify-content: space-between;
   -moz-column-gap: 20px;
        column-gap: 20px;
+}
+.page .transaction-container .username .control-container .col .p-dropdown {
+  width: 100%;
+  border-radius: 6px;
+  border: none;
 }
 .page .control {
   outline: none;

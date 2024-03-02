@@ -3,13 +3,13 @@ import logo from '../Images/Mobile login-bro.svg';
 import { Auth } from '../Context/Auth';
 
 export default function Login() {
-  const  [phoneNumber, setPhoneNumber] = useState()
+  const  [username, setUsername] = useState()
   const  [password, setPassword] = useState()
   const auth =useContext(Auth);
   const {login} = auth;
   const handleSubmit = (e)=> {
     e.preventDefault();
-    console.log(phoneNumber, password);
+    login(username, password);
   }
   return (
     <>
@@ -17,15 +17,15 @@ export default function Login() {
         <div className="login-card">
           <img src={logo} />
           <h2>Login</h2>
-          <form className="login-form">
-            <div className="username" onSubmit={handleSubmit}>
+          <form className="login-form"onSubmit={handleSubmit}>
+            <div className="username" >
               <input
                 autoComplete="off"
                 spellCheck="false"
                 className="control"
                 type="text"
-                placeholder="Phone number"
-                onChange={(e)=>setPhoneNumber(e.target.value)}
+                placeholder="username"
+                onChange={(e)=>setUsername(e.target.value)}
               />
               <input
                 autoComplete="off"
