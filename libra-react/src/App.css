@@ -71,15 +71,16 @@
 }
 
 .page {
-  display: grid;
-  place-items: center;
-  margin: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--pureBlack);
   color: #fdfdfd;
   height: calc(100dvh - 76px);
 }
 .page .login-card {
   width: 400px;
-  padding: 60px 30px 30px;
+  padding: 30px 30px 30px;
   border-radius: 16px;
   background: var(--darkGrey);
   text-align: center;
