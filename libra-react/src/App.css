@@ -1,8 +1,8 @@
-@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Cairo:wght@200..1000&display=swap");
 * {
   box-sizing: border-box;
   margin: 0;
-  font-family: "Euclid Circular A", "Poppins";
+  font-family: "Cairo", sans-serif;
 }
 
 :root {
@@ -16,11 +16,64 @@
   --darkShadow: 4px 10px 5px 0px rgba(0, 0, 0, 0.5);
 }
 
+.transaction-container {
+  display: flex;
+  justify-content: center;
+}
+.transaction-container .tables-container {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  width: 100%;
+  padding: 15px;
+  row-gap: 20px;
+}
+.transaction-container .tables-container .outer-table {
+  background: var(--offGrey);
+  width: 100%;
+  border-radius: 7px;
+  overflow-y: auto;
+  text-align: center;
+  direction: rtl;
+}
+.transaction-container .tables-container .outer-table:first-child {
+  max-height: 300px;
+}
+.transaction-container .tables-container .outer-table:nth-child(2) {
+  max-height: 500px;
+}
+.transaction-container .tables-container .outer-table table {
+  width: 100%;
+  border-spacing: 0;
+}
+.transaction-container .tables-container .outer-table table th {
+  position: sticky;
+  top: 0;
+  background-color: #86753d;
+  padding: 10px;
+}
+.transaction-container .tables-container .outer-table table td {
+  padding: 12px;
+  font-size: 20px;
+}
+.transaction-container .tables-container .outer-table table td .scan {
+  border: none;
+  background-color: transparent;
+  outline: none;
+  padding: 4px 25px;
+  border: 2px solid #86753d;
+  border-radius: 4px;
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+.transaction-container .tables-container .outer-table table td .scan:hover {
+  background-color: #86753d;
+}
+
 .page {
   display: grid;
   place-items: center;
   margin: 0;
-  background: var(--pureBlack);
   color: #fdfdfd;
   height: calc(100dvh - 76px);
 }
@@ -30,69 +83,6 @@
   border-radius: 16px;
   background: var(--darkGrey);
   text-align: center;
-}
-.page .transaction-container {
-  display: flex;
-  flex-direction: column;
-  row-gap: 20px;
-}
-.page .transaction-container .control-btn {
-  width: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
-.page .transaction-container .control-btn button {
-  width: 49%;
-  padding: 12px 0;
-  font-size: 19px;
-  cursor: pointer;
-  background: var(--mainBeige);
-  text-align: center;
-  outline: none;
-  border: none;
-  border-radius: 14px;
-}
-.page .transaction-container .login-card {
-  width: 800px;
-  padding: 30px 30px 30px;
-  border-radius: 16px;
-  background: var(--darkGrey);
-  text-align: center;
-}
-.page .transaction-container .username {
-  display: flex;
-  flex-direction: column;
-  row-gap: 20px;
-}
-.page .transaction-container .username .weight-number {
-  outline: none;
-  width: 100%;
-  padding: 60px 16px;
-  background: var(--offGrey);
-  border: 0;
-  border-radius: 6px;
-  font-family: inherit;
-  font-size: 70px;
-  transition: 0.4s;
-  text-align: center;
-  letter-spacing: 2px;
-}
-.page .transaction-container .username .control-container {
-  display: flex;
-  flex-direction: column;
-  row-gap: 20px;
-}
-.page .transaction-container .username .control-container .col {
-  display: flex;
-  justify-content: space-between;
-  -moz-column-gap: 20px;
-       column-gap: 20px;
-}
-.page .transaction-container .username .control-container .col .p-dropdown {
-  width: 100%;
-  border-radius: 6px;
-  border: none;
 }
 .page .control {
   outline: none;

@@ -10,6 +10,7 @@ export default function Transaction() {
   const [agentName, setAgentName] = useState(null);
   const [carModel, setCarModel] = useState(null);
   const [weightKind, setWeightKind] = useState(null);
+  const [isScaned, setIsScaned ] = useState(false);
   const [agentData, setAgentData] = useState(null);
   const libraToken= localStorage.getItem( "libraToken");
   const scan =useContext(Scan);
@@ -35,9 +36,126 @@ export default function Transaction() {
   return (
     <>
       <Navbar/>
-      <div className="page">
-        <div className='transaction-container'>
-          <Banner label="Logout" showBtn="truet">
+      <div className="transaction-container">
+        <div className='tables-container'>
+          <div className="outer-table">
+            <table>
+              <thead>
+                <tr>
+                  <th>رقم امر البيع</th>
+                  <th>تاريخ الكارت</th>
+                  <th>كود العميل</th>
+                  <th>أسم العميل</th>
+                  <th>كود</th>
+                  <th>نوع امر البيع</th>
+                  <th>المندوب</th>
+                  <th>رقم السياره</th>
+                  <th>أسم السائق</th>
+                  <th>ساعة الدخول</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>بلابلا</td>
+                  <td>لبابابلا</td>
+                  <td>بلابلا</td>
+                  <td>لبابلابلا</td>
+                  <td>لبابلابلا</td>
+                  <td>لبابلابلا</td>
+                  <td>لبابلابلا</td>
+                  <td>لبابلابلا</td>
+                  <td>لبابلابلا</td>
+                  <td>لبابلابلا</td>
+                </tr>
+                <tr>
+                  <td>بلابلا</td>
+                  <td>لبابابلا</td>
+                  <td>بلابلا</td>
+                  <td>لبابلابلا</td>
+                  <td>لبابلابلا</td>
+                  <td>لبابلابلا</td>
+                  <td>لبابلابلا</td>
+                  <td>لبابلابلا</td>
+                  <td>لبابلابلا</td>
+                  <td>لبابلابلا</td>
+                </tr>
+                <tr>
+                  <td>بلابلا</td>
+                  <td>لبابابلا</td>
+                  <td>بلابلا</td>
+                  <td>لبابلابلا</td>
+                  <td>لبابلابلا</td>
+                  <td>لبابلابلا</td>
+                  <td>لبابلابلا</td>
+                  <td>لبابلابلا</td>
+                  <td>لبابلابلا</td>
+                  <td>لبابلابلا</td>
+                </tr>
+                <tr>
+                  <td>بلابلا</td>
+                  <td>لبابابلا</td>
+                  <td>بلابلا</td>
+                  <td>لبابلابلا</td>
+                  <td>لبابلابلا</td>
+                  <td>لبابلابلا</td>
+                  <td>لبابلابلا</td>
+                  <td>لبابلابلا</td>
+                  <td>لبابلابلا</td>
+                  <td>لبابلابلا</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <div className="outer-table">
+            <table>
+              <thead>
+                <tr>
+                  <th>كود الصنف</th>
+                  <th>أسم الصنف</th>
+                  <th>الوحده</th>
+                  <th>الحد الأقصي للتحميل</th>
+                  <th>الوزنه الأولي</th>
+                  <th>وقت الوزنه الأولي</th>
+                  <th>الوزنه الثانيه</th>
+                  <th>وقت الوزنه الثانيه</th>
+                  <th>صافي كمية الميزان</th>
+                  <th>كمية الوزن</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>بلابلا</td>
+                  <td>لبابابلا</td>
+                  <td>بلابلا</td>
+                  <td>لبابلابلا</td>
+                  <td>
+                    {isScaned?
+                      <p>7450</p>
+                      :
+                      <button className='scan'>إوزن</button>
+                    }
+                  </td>
+                  <td>لبابلابلا</td>
+                  <td>
+                    {isScaned?
+                      <p>7450</p>
+                      :
+                      <button className='scan'>إوزن</button>
+                    }
+                  </td>
+                  <td>لبابلابلا</td>
+                  <td>لبابلابلا</td>
+                  <td>لبابلابلا</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </>
+  )
+}
+          {/* <Banner label="Logout" showBtn="truet">
             <p className='weight-number'>
               {scanNumber}
             </p>
@@ -57,11 +175,6 @@ export default function Transaction() {
             </div>
           </Banner>
           <div className="control-btn">
-            <button onClick={()=>handleSubmit(scanNumber,weightKind.name,carModel.name,agentName.name,carNumber.name,libraToken)}>Submit</button>
+            <button onClick={()=>handleSubmit(scanNumber,weightKind.name,carModel.name,agentName.name,carNumber.name,libraToken)}>Save</button>
             <button onClick={()=>getScan(libraToken)}>Scan</button>
-          </div>
-        </div>
-      </div>
-    </>
-  )
-}
+          </div> */}
