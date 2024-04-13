@@ -8,7 +8,7 @@ export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const location = useLocation();
   const auth =useContext(Auth);
-  const {logout} = auth;
+  const {logout, fullName} = auth;
   const showUserData = ()=>{
     setIsOpen(!isOpen)
   }
@@ -24,7 +24,7 @@ export default function Navbar() {
             spellCheck="false"
             className="control"
             type="text"
-            placeholder={localStorage.getItem('fullName')}
+            placeholder={fullName}
             disabled
           />
         </Banner>
@@ -39,7 +39,7 @@ export default function Navbar() {
               <Link to="/">Settings</Link>
             </li>
             <li className={location.pathname==='/transaction'? 'active':''}>
-              <Link to="transaction">Transaction</Link>
+              <Link to="/transaction">Transaction</Link>
             </li>
           </ul>
         </div>

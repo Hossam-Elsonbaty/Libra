@@ -7,22 +7,28 @@ import Settings from './Pages/Settings';
 import Transaction from './Pages/Transaction';
 import {AuthProvider} from './Context/Auth'
 import {ScanProvider} from './Context/Scan'
+import PrivateRoutes from './Context/PrivateRoutes';
+
 function App() {
   return (
     <>
       <a hidden href="https://storyset.com/phone">Phone illustrations by Storyset</a>
-      <AuthProvider>
-        <ScanProvider>
-          <Router>
+      <Router>
+        <AuthProvider>
+          <ScanProvider>
             <Routes>
-              <Route path='sign-up' element={<SignUp />} />
-              <Route path='login' element={<Login />} />
-              <Route path='/' element={<Settings />} />
-              <Route path='transaction' element={<Transaction />} />
+              {/* <Route element={<PrivateRoutes/>}>
+                <Route path='transaction' exact element={<Transaction />} />
+                <Route path='/' exact element={<Settings />} />
+              </Route> */}
+              <Route path='transaction' exact element={<Transaction />} />
+              <Route path='/' exact element={<Settings />} />
+              <Route path='sign-up' exact element={<SignUp />} />
+              <Route path='login' exact element={<Login />} />
             </Routes>
-          </Router>
-        </ScanProvider>
-      </AuthProvider>
+          </ScanProvider>
+        </AuthProvider>
+      </Router>
     </>
   );
 }
