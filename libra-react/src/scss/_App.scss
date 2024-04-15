@@ -37,10 +37,10 @@
       text-align: center;
       direction: rtl;
       &:first-child{
-        max-height:300px ;
+        max-height:400px ;
       }
       &:nth-child(2){
-        max-height:500px ;
+        max-height:300px ;
       }
       table{
         width: 100%;
@@ -49,11 +49,12 @@
           position: sticky;
           top :0;
           background-color: #86753d;
-          padding: 10px;
+          padding: 5px;
+          font-size: 15px;
         }
         td{
-          padding: 12px;
-          font-size: 20px;
+          padding: 5px;
+          font-size: 15px;
           .scan{
             border: none;
             background-color: transparent;

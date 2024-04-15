@@ -1,16 +1,9 @@
 import React, {useEffect, useState, useContext} from 'react';
 import Navbar from '../Components/Navbar';
-import Banner from '../Components/Banner';
-import { Dropdown } from 'primereact/dropdown';
 import axios from 'axios';
 import { Scan } from '../Context/Scan';
 
 export default function Transaction() {
-  const [carNumber, setCarNumber] = useState(null);
-  const [agentName, setAgentName] = useState(null);
-  const [carModel, setCarModel] = useState(null);
-  const [weightKind, setWeightKind] = useState(null);
-  const [isScanned, setIsScanned ] = useState(false);
   const [agentData, setAgentData] = useState(null);
   const [detailData, setDetailData] = useState(null);
   const libraToken= localStorage.getItem( "libraToken");
@@ -25,40 +18,77 @@ export default function Transaction() {
       }})
     .then((response)=>{
       setAgentData(response.data)
-      console.log(response.data);
     })
     .catch((err)=>{
       console.log(err);
     })
   }
-  const getDetailData = (BRAN_CODE,PO_NO,PO_NO_DATE,POS_FIRM_CODE)=> {
-    axios.get(`http://127.0.0.1:8000/data-detail`,{headers:{
-      'Authorization': `Token ${libraToken}`,
-      'master_pk': {BRAN_CODE,PO_NO,PO_NO_DATE,POS_FIRM_CODE}
-    }})
-    .then((response)=>{
+  const getDetailData = (BRAN_CODE, customer_id, sales_order_number, date_card) => {
+    axios.get(`http://127.0.0.1:8000/data-detail`, {
+      headers: {
+        'Authorization': `Token ${libraToken}`,
+      },
+      params: {
+        BRAN_CODE,
+        customer_id,
+        sales_order_number,
+        date_card
+      }
+    })
+    .then((response) => {
       setDetailData(response.data);
-      console.log(response.data);
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+  }
+  const handleScan = (item_code,BRAN_CODE, customer_id, sales_order_number, date_card)=> {
+    axios.get(`http://127.0.0.1:8000/data-scale-read1`,{
+      headers:{'Authorization': `Token ${libraToken}`},
+      params:{
+        item_code,
+        BRAN_CODE,
+        customer_id,
+        sales_order_number,
+        date_card
+      }
+    })
+    .then((response)=>{
+      setDetailData(detailData=>
+        detailData.map((item)=>
+        item_code === item.item_code ? 
+          {...item,
+            frist_wight:response.data.firstWeight,
+            frist_time:response.data.firstWeighingTime
+          } :item
+        )
+      )
     })
     .catch((err)=>{
       console.log(err);
     })
   }
-  const handleScan = (id)=> {
-    axios.get(`http://127.0.0.1:8000/data-scale-read1/${id}`,{headers:{'Authorization': `Token ${libraToken}`}})
-    .then((response)=>{
-      setDetailData(response.data)
-      console.log(response.data);
+  const handleScan2 = (item_code,BRAN_CODE, customer_id, sales_order_number, date_card)=> {
+    axios.get(`http://127.0.0.1:8000/data-scale-read2`,{
+      headers:{'Authorization': `Token ${libraToken}`},
+      params:{
+        item_code,
+        BRAN_CODE,
+        customer_id,
+        sales_order_number,
+        date_card
+      }
     })
-    .catch((err)=>{
-      console.log(err);
-    })
-  }
-  const handleScan2 = (id)=> {
-    axios.get(`http://127.0.0.1:8000/data-scale-read2/${id}`,{headers:{'Authorization': `Token ${libraToken}`}})
     .then((response)=>{
-      setDetailData(response.data)
-      console.log(response.data);
+      setDetailData(detailData=>
+        detailData.map((item)=>
+        item_code === item.item_code ? 
+          {...item,
+            SECOUND_WIGHT:response.data.secondWeight,
+            SECOUND_time:response.data.secondWeighingTime
+          } :item
+        )
+      )
     })
     .catch((err)=>{
       console.log(err);
@@ -92,17 +122,17 @@ export default function Transaction() {
               <tbody>
                 {agentData&&agentData.map((key,index)=>{
                   return(
-                    <tr key={index} onClick={()=>getDetailData(key.BRAN_CODE,key.PO_NO,key.PO_NO_DATE,key.POS_FIRM_CODE)}>
-                      <td>{key.Sales_Order_Number}</td>
-                      <td>{key.Date_of_Card}</td>
-                      <td>{key.Customer_Code}</td>
-                      <td>{key.Customer_Name}</td>
-                      <td>{key.Code}</td>
-                      <td>{key.Sales_Order_Type}</td>
-                      <td>{key.Customer_Name}</td>
-                      <td>{key.Car_Number}</td>
-                      <td>{key.Driver_Name}</td>
-                      <td>{key.Entry_Time}</td>
+                    <tr key={index} onClick={()=>getDetailData(key.BRAN_CODE,key.cusomer_id,key.sales_order_number,key.date_card)}>
+                      <td>{key.sales_order_number}</td>
+                      <td>{key.date_card}</td>
+                      <td>{key.cusomer_id}</td>
+                      <td>{key.cusomer_name}</td>
+                      <td>{key.order_code}</td>
+                      <td>{key.order_type}</td>
+                      <td>{key.salse_man}</td>
+                      <td>{key.car_number}</td>
+                      <td>{key.DRIVER_NAME}</td>
+                      <td>{key.hour_in}</td>
                     </tr>
                   )
                 })}
@@ -129,28 +159,22 @@ export default function Transaction() {
                 {detailData&&detailData.map((key,index)=>{
                   return(
                     <tr key={index}>
-                      <td>{key.Item_Code}</td>
-                      <td>{key.Item_Name}</td>
-                      <td>{key.Unit}</td>
-                      <td>{key.Maximum_Load_Limit}</td>
+                      <td>{key.item_code}</td>
+                      <td>{key.item_NAME}</td>
+                      <td>{key.unite}</td>
+                      <td>{key.max}</td>
                       <td>
-                        {key.firstWeight?
-                          <p>{key.firstWeight}</p>
-                          :
-                          <button className='scan' onClick={handleScan}>إوزن</button>
-                        }
+                        <p>{key.frist_wight}KG</p>
+                        <button className='scan' onClick={()=>handleScan(key.item_code,key.BRAN_CODE,key.customer_id,key.sales_order_number,key.date_card)}>إوزن</button>
                       </td>
-                      <td>{key.firstWeight}</td>
+                      <td>{key.frist_time}</td>
                       <td>
-                        {key.secondWeight?
-                          <p>{key.secondWeight}</p>
-                          :
-                          <button className='scan' onClick={handleScan2}>إوزن</button>
-                        }
+                        <p>{key.SECOUND_WIGHT}KG</p>
+                        <button className='scan' onClick={()=>handleScan2(key.item_code,key.BRAN_CODE,key.customer_id,key.sales_order_number,key.date_card)}>إوزن</button>
                       </td>
-                      <td>{key.secondWeightTime}</td>
-                      <td>{key.firstWeight-key.secondWeight} KG</td>
-                      <td>{key.Item_Code}</td>
+                      <td>{key.SECOUND_time}</td>
+                      <td>{key.frist_wight-key.SECOUND_WIGHT} KG</td>
+                      <td>{key.qyt_wight}</td>
                     </tr>
                   )
                 })}

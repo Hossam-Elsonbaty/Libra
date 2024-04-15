@@ -37,10 +37,10 @@
   direction: rtl;
 }
 .transaction-container .tables-container .outer-table:first-child {
-  max-height: 300px;
+  max-height: 400px;
 }
 .transaction-container .tables-container .outer-table:nth-child(2) {
-  max-height: 500px;
+  max-height: 300px;
 }
 .transaction-container .tables-container .outer-table table {
   width: 100%;
@@ -50,11 +50,12 @@
   position: sticky;
   top: 0;
   background-color: #86753d;
-  padding: 10px;
+  padding: 5px;
+  font-size: 15px;
 }
 .transaction-container .tables-container .outer-table table td {
-  padding: 12px;
-  font-size: 20px;
+  padding: 5px;
+  font-size: 15px;
 }
 .transaction-container .tables-container .outer-table table td .scan {
   border: none;
