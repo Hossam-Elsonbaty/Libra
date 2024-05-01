@@ -283,4 +283,171 @@
   color: var(--mainBeige);
   font-weight: 600;
   font-size: 20px;
+}
+
+.main-page-container {
+  padding: 30px;
+  background-color: #f7faff;
+  min-height: 100vh;
+  width: 100%;
+  display: flex;
+}
+
+.sideBar {
+  width: 18%;
+  margin-right: 3%;
+}
+
+.logo-container {
+  background-color: #ffffff;
+  padding: 25px;
+  width: 100%;
+  border-radius: 9px;
+}
+
+.logo-container > img {
+  width: 100%;
+  height: 50px;
+}
+
+.sideBar-menu {
+  width: 100%;
+  padding-top: 20px;
+}
+
+.sideBar-menu-item {
+  width: 100%;
+  padding-top: 15px;
+  padding-bottom: 15px;
+  display: flex;
+  color: #676b84;
+  font-size: larger;
+  cursor: pointer;
+}
+
+.sideBar-menu-item > i {
+  margin-right: 12%;
+}
+
+.sideBar-menu-item-right {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+
+main {
+  width: 100%;
+}
+
+.searchAndUser-container {
+  background-color: #ffffff;
+  padding: 30px;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-radius: 9px;
+  margin-bottom: 40px;
+}
+
+.search-container {
+  width: 40%;
+  display: flex;
+  align-items: center;
+  border-radius: 15px;
+  height: 60px;
+}
+
+.search-input {
+  height: 100%;
+  width: 100%;
+  padding: 10px 40px 10px 10px;
+  border: none;
+  outline: none;
+  font-size: 16px;
+  box-sizing: border-box;
+  background-color: #f7faff;
+  color: #6e8467;
+  font-size: larger;
+  border-top-right-radius: 30px;
+  border-bottom-right-radius: 30px;
+}
+
+/* Style for placeholder text */
+.search-input::-moz-placeholder {
+  color: #6e8467;
+}
+.search-input::placeholder {
+  color: #6e8467;
+}
+
+.search-button {
+  height: 100%;
+  width: 65px;
+  background-color: #f7faff;
+  border-top-left-radius: 30px;
+  border-bottom-left-radius: 30px;
+  border: none;
+  color: #676b84;
+  font-size: larger;
+  cursor: pointer;
+}
+
+.userImg {
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  border: #676b84 1.5px solid;
+  overflow: hidden;
+  cursor: pointer;
+}
+
+.userImg > img {
+  width: 70px;
+  height: 70px;
+}
+
+.dashboard-page {
+  padding: 5px;
+}
+
+.dashboard-page-container {
+  background-color: #ffffff;
+  padding: 30px;
+}
+
+.rictangles-container {
+  width: 100%;
+  min-height: 100px;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+.rictangle {
+  width: 48.5%;
+  height: 170px;
+  padding-top: 35px;
+  padding-left: 25px;
+  border-radius: 15px;
+  background-color: #3b76ef;
+  color: #ffffff;
+  margin-bottom: 30px;
+}
+
+.rictangle h3 {
+  margin-bottom: 10px;
+}
+
+::-webkit-scrollbar {
+  width: 10px; /* width of the scrollbar */
+}
+
+::-webkit-scrollbar-track {
+  background: #dddddd; /* color of the track */
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #f8dbdd; /* color of the scrollbar */
+  border-radius: 6px; /* roundness of the scrollbar */
 }/*# sourceMappingURL=App.css.map */
