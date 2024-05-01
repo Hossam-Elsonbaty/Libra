@@ -323,6 +323,7 @@
   color: #676b84;
   font-size: larger;
   cursor: pointer;
+  align-items: center;
 }
 
 .sideBar-menu-item > i {
@@ -333,6 +334,7 @@
   width: 100%;
   display: flex;
   justify-content: space-between;
+  align-items: center;
 }
 
 main {
@@ -393,13 +395,45 @@ main {
   cursor: pointer;
 }
 
+.userSection {
+  width: 24%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: #676b84;
+  font-size: 28px;
+}
+
+.userSection > * {
+  cursor: pointer;
+}
+
+.bell-notification {
+  background-color: red;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  position: relative;
+  top: -37px;
+  right: -16px;
+}
+
+.comment-notification {
+  background-color: red;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  position: relative;
+  top: -37px;
+  right: -18px;
+}
+
 .userImg {
   width: 70px;
   height: 70px;
   border-radius: 50%;
   border: #676b84 1.5px solid;
   overflow: hidden;
-  cursor: pointer;
 }
 
 .userImg > img {

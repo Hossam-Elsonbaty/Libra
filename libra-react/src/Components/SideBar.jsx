@@ -12,7 +12,7 @@ export default function SideBar() {
           <i className="fa fa-home"></i>
           <div className="sideBar-menu-item-right">
             <div className="sideBar-menu-item-name">
-              Dashborad
+              <p>Dashborad</p>
             </div>
             <i className="fa fa-angle-down"></i>
           </div>
