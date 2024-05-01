@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-export default function MenuItem({ title, submenuTitles }) {
+export default function MenuItem({ title,icon, submenuTitles }) {
   const [isOpen, setIsOpen] = useState(false);
 
   const toggleSubMenu = () => {
@@ -10,7 +10,7 @@ export default function MenuItem({ title, submenuTitles }) {
   return (
     <>
       <div className="sideBar-menu-item" onClick={toggleSubMenu}>
-        <i className="fa fa-home"></i>
+        <i className={`${icon}`}></i>
         <div className="sideBar-menu-item-right">
           <div className="sideBar-menu-item-name">
             <p>{title}</p>
