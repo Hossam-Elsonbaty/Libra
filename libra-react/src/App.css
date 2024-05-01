@@ -337,6 +337,32 @@
   align-items: center;
 }
 
+.submenu-container {
+  transition: max-height 0.5s ease-in-out;
+}
+
+.submenu-container.closed {
+  max-height: 0;
+}
+
+.sideBar-submenu-item {
+  width: 100%;
+  padding-top: 3px;
+  padding-bottom: 1px;
+  display: flex;
+  justify-content: flex-end;
+  color: #676b84;
+  font-size: medium;
+  cursor: pointer;
+  align-items: center;
+}
+
+.sideBar-submenu-item-right {
+  width: 78%;
+  display: flex;
+  align-items: center;
+}
+
 main {
   width: 100%;
 }

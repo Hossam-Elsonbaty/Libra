@@ -1,4 +1,5 @@
 import React, { useContext, useState } from 'react';
+import MenuItem from './MenuItem';
 
 export default function SideBar() {
   return (
@@ -8,33 +9,11 @@ export default function SideBar() {
         <img src="https://demo.dashboardpack.com/finance-html/img/logo.png" alt=""/>
       </div>
       <div className="sideBar-menu">
-        <div className="sideBar-menu-item">
-          <i className="fa fa-home"></i>
-          <div className="sideBar-menu-item-right">
-            <div className="sideBar-menu-item-name">
-              <p>Dashborad</p>
-            </div>
-            <i className="fa fa-angle-down"></i>
-          </div>
-        </div>
-        <div className="sideBar-menu-item">
-          <i className="fa fa-home"></i>
-          <div className="sideBar-menu-item-right">
-            <div className="sideBar-menu-item-name">
-              Dashborad
-            </div>
-            <i className="fa fa-angle-down"></i>
-          </div>
-        </div>
-        <div className="sideBar-menu-item">
-          <i className="fa fa-home"></i>
-          <div className="sideBar-menu-item-right">
-            <div className="sideBar-menu-item-name">
-              Dashborad
-            </div>
-            <i className="fa fa-angle-down"></i>
-          </div>
-        </div>
+        <MenuItem title="Dashboard" submenuTitles={["classic","minimal"]}/>
+        <MenuItem title="Dashboard" submenuTitles={["classic","minimal"]}/>
+        <MenuItem title="Dashboard" submenuTitles={["classic","minimal"]}/>
+        <MenuItem title="Dashboard" submenuTitles={["classic","minimal"]}/>
+        <MenuItem title="Dashboard" submenuTitles={["classic","minimal"]}/>
       </div>
     </div>
     </>
