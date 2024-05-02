@@ -2,6 +2,8 @@ import React, { useContext, useState } from 'react';
 import SearchAndUserBar from './../Components/SearchAndUserBar';
 import Rictangle from '../Components/Rictangle';
 import SideBar from '../Components/SideBar';
+import OneChart from '../Components/OneChart';
+import TwoChart from '../Components/TwoChart';
 
 export default function ContainerMain() {
   return (
@@ -20,6 +22,10 @@ export default function ContainerMain() {
               <Rictangle title="Average income" number={100000}/>
               <Rictangle title="Sum income" number={70000}/>
               <Rictangle title="Derived income" number={360000}/>
+            </div>
+            <div className='charts-container'>
+              <OneChart/>
+              <TwoChart/>
             </div>
             {/*put here any component you want . routing must happen here*/}
           </div>

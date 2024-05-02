@@ -567,3 +567,37 @@ main{
   border-radius: 6px; /* roundness of the scrollbar */
 }
 
+.charts-container{
+  margin-top: 20px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.chart-div{
+  background-color:#f9fbff;
+  width: 48.5%;
+}
+
+.chart-data-div{
+  display: flex;
+  color: #4d4f5c;
+  justify-content: space-between;
+  margin-bottom: 25px;
+}
+
+.chart-data-div> select{
+  width: 17%;
+  cursor: pointer;
+  background-color: transparent;
+  color: #6e8467;
+  border-radius: 3px;
+  border: 2px solid #d7dee2;
+  outline: none;
+}
+
+.chart-data-div option{
+  cursor: pointer;
+  background-color: transparent;
+  color: #6e8467;
+}
+
