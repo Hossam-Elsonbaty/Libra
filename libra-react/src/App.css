@@ -467,6 +467,65 @@ main {
   height: 70px;
 }
 
+.admin-settings-div {
+  width: 213px;
+  height: 252px;
+  background-color: #4d4f5c;
+  position: absolute;
+  top: 129px;
+  right: 58px;
+  border-radius: 6px;
+  display: none;
+  padding-top: 20px;
+  padding-right: 20px;
+  padding-left: 20px;
+}
+
+.userImg:hover .admin-settings-div {
+  display: block;
+}
+
+.admin-welcome-div {
+  border-bottom: #79838b 1px solid;
+  height: 70px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  margin-bottom: 20px;
+}
+
+.admin-welcome-div-first-p {
+  color: #828bb2;
+  font-size: small;
+}
+
+.admin-welcome-div-second-p {
+  color: #ffffff;
+  font-size: medium;
+}
+
+.admin-buttons-div {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+
+.admin-buttons-div span {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+  font-size: large;
+}
+
+.admin-buttons-div span p {
+  margin-right: 20px;
+  color: #ffffff;
+}
+
+.admin-buttons-div span:hover {
+  color: #ffffff;
+}
+
 .dashboard-page {
   padding: 5px;
 }
