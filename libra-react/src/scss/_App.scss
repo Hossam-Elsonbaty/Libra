@@ -514,12 +514,15 @@ main{
   width: 70px;
   height: 70px;
   border-radius: 50%;
-  border:#676b84 1.5px solid;
+  border:#a5adc6 2px solid;
   overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 .userImg>img{
-  width: 70px;
-  height: 70px;
+  width: 50px;
+  height: 50px;
 }
 
 .admin-settings-div{
