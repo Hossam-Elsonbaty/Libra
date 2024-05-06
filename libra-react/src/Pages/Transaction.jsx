@@ -186,7 +186,7 @@
 //     </>
 //   )
 // }
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect } from 'react';
 import "primereact/resources/themes/tailwind-light/theme.css";
 import SearchAndUserBar from './../Components/SearchAndUserBar';
 import SideBar from '../Components/SideBar';
@@ -203,96 +203,112 @@ export default function ContainerMain() {
   useEffect(() => {
     setProducts([
       {
-          id: '1000',
-          code: 'f230fh0g3',
-          name: 'Bamboo Watch',
-          description: 'Product Description',
-          price: 65,
-          category: 'Accessories',
-          quantity: 24,
+        sales_order_number: '1000',
+        date_card: '2020-09-13',
+        cusomer_id: '112',
+        cusomer_name: 'ناشمثين الحسوبي',
+        order_code: "65487",
+        order_type: 'Accessories',
+        salse_man:"ريمص علي",
+        car_number: "24",
+        DRIVER_NAME: 'ناشبي',
+        hour_in: '2020-09-13',
           orders: [
               {
-                  id: '1000-0',
-                  productCode: 'f230fh0g3',
-                  date: '2020-09-13',
-                  amount: 65,
-                  quantity: 1,
-                  customer: 'David James',
+                item_code: '1000-1',
+                item_NAME: 'f230fh0g3',
+                unite: '2020-09-13',
+                max: 65,
+                frist_wight: '1000',
+                frist_time: '2024-01-13',
+                SECOUND_WIGHT: '2500',
+                SECOUND_time: '2024-01-13',
+                customer: 'David James',
+                hour_in: '2024-01-13',
               },
               {
-                  id: '1000-1',
-                  productCode: 'f230fh0g3',
-                  date: '2020-05-14',
-                  amount: 130,
-                  quantity: 2,
-                  customer: 'Leon Rodrigues',
+                item_code: '1000-2',
+                item_NAME: 'f230fh0g3',
+                unite: '2020-09-13',
+                max: 65,
+                frist_wight: '1000',
+                frist_time: '2024-01-13',
+                SECOUND_WIGHT: '2500',
+                SECOUND_time: '2024-01-13',
+                customer: 'David James',
+                hour_in: '2024-01-13',
               },
               {
-                  id: '1000-2',
-                  productCode: 'f230fh0g3',
-                  date: '2019-01-04',
-                  amount: 65,
-                  quantity: 1,
-                  customer: 'Juan Alejandro',
-              },
-              {
-                  id: '1000-3',
-                  productCode: 'f230fh0g3',
-                  date: '2020-09-13',
-                  amount: 195,
-                  quantity: 3,
-                  customer: 'Claire Morrow',
+                item_code: '1000-3',
+                item_NAME: 'f230fh0g3',
+                unite: '2020-09-13',
+                max: 65,
+                frist_wight: '1000',
+                frist_time: '2024-01-13',
+                SECOUND_WIGHT: '2500',
+                SECOUND_time: '2024-01-13',
+                customer: 'David James',
+                hour_in: '2024-01-13',
               }
           ]
       },{
-        id: '1001',
-        code: 'nvklal433',
-        name: 'Black Watch',
-        description: 'Product Description',
-        image: 'black-watch.jpg',
-        price: 72,
-        category: 'Accessories',
-        quantity: 61,
-        inventoryStatus: 'INSTOCK',
-        rating: 4,
+        sales_order_number: '1001',
+        date_card: '2021-09-13',
+        cusomer_id: '122',
+        cusomer_name: 'بثصثص ',
+        order_code: "21",
+        order_type: 'cars',
+        salse_man:"نثصكا غثي",
+        car_number: "224",
+        DRIVER_NAME: 'ثفءسضشش',
+        hour_in: '2025-09-13',
         orders: [
-            {
-                id: '1001-0',
-                productCode: 'nvklal433',
-                date: '2020-05-14',
-                amount: 72,
-                quantity: 1,
-                customer: 'Maisha Jefferson',
-                status: 'DELIVERED'
-            },
-            {
-                id: '1001-1',
-                productCode: 'nvklal433',
-                date: '2020-02-28',
-                amount: 144,
-                quantity: 2,
-                customer: 'Octavia Murillo',
-                status: 'PENDING'
-            }
-        ]
+          {
+            item_code: '1001-1',
+            item_NAME: 'f230fh0g3',
+            unite: '2020-09-13',
+            max: 65,
+            frist_wight: '1000',
+            frist_time: '2024-01-13',
+            SECOUND_WIGHT: '2500',
+            SECOUND_time: '2024-01-13',
+            customer: 'David James',
+            hour_in: '2024-01-13',
+          },
+          {
+            item_code: '1001-2',
+            item_NAME: 'f230fh0g3',
+            unite: '2020-09-13',
+            max: 65,
+            frist_wight: '1000',
+            frist_time: '2024-01-13',
+            SECOUND_WIGHT: '2500',
+            SECOUND_time: '2024-01-13',
+            customer: 'David James',
+            hour_in: '2024-01-13',
+          },
+          {
+            item_code: '1001-3',
+            item_NAME: 'f230fh0g3',
+            unite: '2020-09-13',
+            max: 65,
+            frist_wight: '1000',
+            frist_time: '2024-01-13',
+            SECOUND_WIGHT: '2500',
+            SECOUND_time: '2024-01-13',
+            customer: 'David James',
+            hour_in: '2024-01-13',
+          }
+      ]
     },])
   }, []);
   const expandAll = () => {
       let _expandedRows = {};
-      products.forEach((p) => (_expandedRows[`${p.id}`] = true));
+      products.forEach((p) => (_expandedRows[`${p.sales_order_number}`] = true));
       setExpandedRows(_expandedRows);
   };
   const collapseAll = () => {
       setExpandedRows(null);
-  };
-  const formatCurrency = (value) => {
-      return value.toLocaleString('en-US', { style: 'currency', currency: 'USD' });
-  };
-  const amountBodyTemplate = (rowData) => {
-      return formatCurrency(rowData.amount);
-  };
-  const priceBodyTemplate = (rowData) => {
-      return formatCurrency(rowData.price);
   };
   const allowExpansion = (rowData) => {
       return rowData.orders.length > 0;
@@ -300,13 +316,18 @@ export default function ContainerMain() {
   const rowExpansionTemplate = (data) => {
     return (
         <div className="p-3">
-            <h5>Details for {data.name}</h5>
+            <h5>Details for {data.sales_order_number}</h5>
             <DataTable value={data.orders}>
-                <Column field="id" header="Id" sortable></Column>
-                <Column field="customer" header="Customer" sortable></Column>
-                <Column field="date" header="Date" sortable></Column>
-                <Column field="amount" header="Amount" body={amountBodyTemplate} sortable></Column>
-                {/* <Column headerStyle={{ width: '4rem' }} body={searchBodyTemplate}></Column> */}
+                <Column field="item_code" header="كود الصنف" sortable></Column>
+                <Column field="item_NAME" header="أسم الصنف" sortable></Column>
+                <Column field="unite" header="الوحده" sortable></Column>
+                <Column field="max" header="الحد الأقصي للتحميل" sortable></Column>
+                <Column field="frist_wight" header="الوزنه الأولي" sortable></Column>
+                <Column field="frist_time" header="وقت الوزنه الأولي" sortable></Column>
+                <Column field="SECOUND_WIGHT" header="الوزنه الثانيه" sortable></Column>
+                <Column field="SECOUND_time" header="وقت الوزنه الثانيه" sortable></Column>
+                <Column field="customer" header="صافي كمية الميزان" sortable></Column>
+                <Column field="qyt_wight" header="كمية الوزن" sortable></Column>
                 <Column body={(nodeData)=>actionTemplate(nodeData)} headerClassName="w-10rem"></Column>
                 <Column body={(nodeData)=>actionTemplate2(nodeData)} headerClassName="w-10rem"></Column>
             </DataTable>
@@ -399,14 +420,20 @@ export default function ContainerMain() {
               <div className="card" >
                 <DataTable  globalFilter={globalFilter} value={products} expandedRows={expandedRows} onRowToggle={(e) => setExpandedRows(e.data)}
                     rowExpansionTemplate={rowExpansionTemplate}
-                    dataKey="id" header={header} tableStyle={{ minWidth: '60rem' }}>
+                    dataKey="sales_order_number" header={header} tableStyle={{ minWidth: '60rem' }}>
                     <Column expander={allowExpansion} style={{ width: '5rem' }} />
-                    <Column field="name" header="Name" sortable />
-                    <Column field="price" header="Price" sortable body={priceBodyTemplate} />
-                    <Column field="category" header="Category" sortable />
+                    <Column field="sales_order_number" header="رقم امر البيع" sortable />
+                    <Column field="date_card" header="تاريخ الكارت" sortable />
+                    <Column field="cusomer_id" header="كود العميل" sortable />
+                    <Column field="cusomer_name" header="أسم العميل" sortable />
+                    <Column field="order_code" header="كود" sortable />
+                    <Column field="order_type" header="نوع امر البيع" sortable />
+                    <Column field="salse_man" header="المندوب" sortable />
+                    <Column field="car_number" header="رقم السياره" sortable />
+                    <Column field="DRIVER_NAME" header="أسم السائق" sortable />
+                    <Column field="hour_in" header="ساعة الدخول" sortable />
                 </DataTable>
               </div>
-              {/*put here any component you want . routing must happen here*/}
             </div>
           </div>
         </main>

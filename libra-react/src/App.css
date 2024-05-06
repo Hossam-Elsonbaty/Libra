@@ -471,6 +471,7 @@ main {
 }
 
 .admin-settings-div {
+  z-index: 8;
   width: 213px;
   height: 252px;
   background-color: #4d4f5c;
