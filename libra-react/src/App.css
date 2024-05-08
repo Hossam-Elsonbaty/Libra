@@ -296,13 +296,13 @@
 }
 
 .sideBar {
-  width: 18%;
-  margin-left: 3%;
+  width: 16%;
+  margin-left: 2%;
 }
 
 .logo-container {
   background-color: #ffffff;
-  padding: 25px;
+  padding: 15px;
   width: 100%;
   border-radius: 9px;
 }
@@ -377,13 +377,13 @@ main {
 
 .searchAndUser-container {
   background-color: #ffffff;
-  padding: 30px;
+  padding: 10px 20px;
   width: 100%;
   display: flex;
   justify-content: space-between;
   align-items: center;
   border-radius: 9px;
-  margin-bottom: 40px;
+  margin-bottom: 15px;
   direction: rtl;
 }
 
@@ -395,7 +395,7 @@ main {
   height: 60px;
 }
 .search-container .companyTitle {
-  font-size: 25px;
+  font-size: 23px;
   font-weight: bold;
   color: #5b6bdc;
 }
@@ -469,8 +469,8 @@ main {
 }
 
 .userImg {
-  width: 70px;
-  height: 70px;
+  width: 50px;
+  height: 50px;
   border-radius: 50%;
   border: #a5adc6 2px solid;
   overflow: hidden;
@@ -480,8 +480,8 @@ main {
 }
 
 .userImg > img {
-  width: 50px;
-  height: 50px;
+  width: 28px;
+  height: 28px;
 }
 
 .admin-settings-div {
@@ -622,4 +622,36 @@ main {
   cursor: pointer;
   background-color: transparent;
   color: #6e8467;
+}
+
+.p-datatable-wrapper {
+  direction: rtl !important;
+}
+
+.p-datatable .p-datatable-thead > tr > th {
+  text-align: center;
+  padding: 1.25rem;
+  border: 1px solid #f4f4f5;
+  border-width: 0 0 1px 0;
+  color: #6b7280;
+  background: #fafafa;
+  transition: none;
+}
+
+.p-datatable .p-datatable-tbody > tr > td {
+  text-align: center;
+  border: 1px solid #f4f4f5;
+  border-width: 0 0 1px 0;
+  padding: 0.25rem;
+}
+
+.p-column-header-content {
+  width: -moz-max-content;
+  width: max-content;
+}
+
+.p-datatable .p-datatable-header .gap-2 {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
 }/*# sourceMappingURL=App.css.map */
