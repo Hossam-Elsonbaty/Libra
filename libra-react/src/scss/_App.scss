@@ -5,6 +5,7 @@
   box-sizing: border-box;
   margin: 0;
   font-family: "Cairo", sans-serif;
+  overflow-x: hidden;
   // font-family: "Euclid Circular A", "Poppins";
 }
 :root {
@@ -354,11 +355,12 @@
   min-height: 100vh;
   width: 100%;
   display: flex;
+  direction: rtl;
 }
 
 .sideBar{
   width: 18%;
-  margin-right: 3%;
+  margin-left: 3%;
 }
 
 .logo-container{
@@ -383,6 +385,7 @@
   padding-top: 15px;
   padding-bottom: 15px;
   display: flex;
+  gap: 1rem;
   color: #676b84;
   font-size: larger;
   cursor: pointer;
@@ -390,7 +393,7 @@
 }
 
 .sideBar-menu-item > i{
-  margin-right: 12%;
+  padding: 9px;
 }
 
 .sideBar-menu-item-right{
@@ -426,6 +429,11 @@
   align-items: center;
 }
 
+.active-title {
+  color: #5b6bdc;
+  font-weight: bold;
+}
+
 main{
   width: 100%;
 }
@@ -439,14 +447,20 @@ main{
   align-items: center;
   border-radius: 9px;
   margin-bottom:40px ;
+  direction: rtl;
 }
 
 .search-container{
-  width: 40%;
+  width: 60%;
   display: flex;
   align-items: center;
   border-radius: 15px;
   height: 60px;
+  .companyTitle{
+    font-size: 25px;
+    font-weight: bold;
+    color: #5b6bdc;
+  }
 }
 .search-input {
   height: 100%;
@@ -497,8 +511,8 @@ main{
   height: 10px;
   border-radius: 50%;
   position: relative;
-  top: -37px;
-  right: -16px;
+  top: -36px;
+  right: -1px;
 }
 .comment-notification {
   background-color: red;
@@ -506,8 +520,8 @@ main{
   height: 10px;
   border-radius: 50%;
   position: relative;
-  top: -37px;
-  right: -18px;
+  top: -36px;
+  right: -1px;
 }
 
 .userImg{
@@ -532,7 +546,7 @@ main{
   background-color: #4d4f5c;
   position: absolute;
   top: 129px;
-  right:58px;
+  left:3%;
   border-radius: 6px;
   display: none;
   padding-top: 20px;
@@ -575,7 +589,7 @@ main{
 }
 
 .admin-buttons-div span p{
-  margin-right: 20px;
+  margin-left: 20px;
   color: #ffffff;
 }
 
@@ -585,6 +599,7 @@ main{
 
 .dashboard-page{
   padding: 5px;
+  direction: ltr;
 }
 
 .dashboard-page-container{
@@ -662,3 +677,9 @@ main{
   color: #6e8467;
 }
 
+// primereact
+
+// .p-datatable-table{
+//   direction: rtl;
+// }
+// primereact

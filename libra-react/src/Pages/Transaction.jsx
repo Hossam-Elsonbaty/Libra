@@ -146,7 +146,7 @@ export default function ContainerMain() {
           <div className="dashboard-page">
             <div className="dashboard-page-container">
               <div className="card" >
-                <DataTable  globalFilter={globalFilter} value={products} expandedRows={expandedRows} onRowToggle={(e) => setExpandedRows(e.data)}
+                <DataTable paginator rows={5} rowsPerPageOptions={[5, 10, 25]} scrollable scrollHeight="500px" globalFilter={globalFilter} value={products} expandedRows={expandedRows} onRowToggle={(e) => setExpandedRows(e.data)}
                     rowExpansionTemplate={rowExpansionTemplate}
                     dataKey="sales_order_number" header={header} tableStyle={{ minWidth: '60rem' }}>
                     <Column expander={allowExpansion} style={{ width: '5rem' }} />
