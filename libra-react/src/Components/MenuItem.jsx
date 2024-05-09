@@ -5,13 +5,23 @@ export default function MenuItem({ title,icon, submenuTitles }) {
   const [isOpen, setIsOpen] = useState(false);
   const navigate = useNavigate();
   const location = useLocation();
+  let haveTheActiveSubMenu = false;
   
   const toggleSubMenu = () => {
     setIsOpen(!isOpen);
   };
 
-  function navToPage(navigatePage){
-    navigate(navigatePage)
+  function navToPage(navigatePage) {
+    navigate(`/${navigatePage}`);
+  }
+
+  // to open menu item sublist that user in
+  let i = 0
+  for(i of submenuTitles){
+    
+    if("/"+(i.navigate)===location.pathname){
+      haveTheActiveSubMenu=true;
+    }
   }
 
   return (
@@ -22,21 +32,19 @@ export default function MenuItem({ title,icon, submenuTitles }) {
                 <div className="sideBar-menu-item-name">
                     <p>{title}</p>
                 </div>
-                <i className={`fa ${isOpen ? 'fa-angle-up' : 'fa-angle-down'}`}></i>
+                <i className={`fa ${isOpen || haveTheActiveSubMenu ? 'fa-angle-up' : 'fa-angle-down'}`}></i>
             </div>
         </div>
         <div
             className={`submenu-container ${isOpen ? 'open' : 'closed'}`}
             style={{
-                maxHeight: isOpen ? `${submenuTitles.length * 40}px` : '0px',
+                maxHeight: isOpen || haveTheActiveSubMenu? `${submenuTitles.length * 40}px` : '0px',
                 overflow: 'hidden',
                 transition: 'max-height 0.3s ease-in-out',
             }}
         >
             {submenuTitles.map((submenuTitle, index) => {
-                // Check if the current URL path matches the submenuTitle navigate value
                 const isActive = location.pathname === "/"+  submenuTitle.navigate;
-                console.log(isActive,location.pathname,submenuTitle.navigate)
 
                 return (
                     <div
