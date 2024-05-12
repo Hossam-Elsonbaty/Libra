@@ -62,18 +62,20 @@ export default function ContainerMain() {
         </div>
     );
 };
-  const header = (
-      <div className="flex flex-wrap justify-content-end gap-2">
-          <Button icon="pi pi-plus" label="Expand All" onClick={expandAll} text />
-          <Button icon="pi pi-minus" label="Collapse All" onClick={collapseAll} text />
-          <div className="flex justify-content-end">
-                <IconField iconPosition="left">
-                    <InputIcon className="pi pi-search" />
-                    <InputText type="search" onInput={(e) => setGlobalFilter(e.target.value)} placeholder="Global Search" />
-                </IconField>
-          </div>
+  const getHeader =()=>{
+    return (
+    <div className="flex flex-wrap justify-content-end gap-2">
+      <Button icon="pi pi-plus" label="Expand All" onClick={expandAll} text />
+      <Button icon="pi pi-minus" label="Collapse All" onClick={collapseAll} text />
+      <div className="flex justify-content-end">
+        <IconField iconPosition="left" >
+          <InputIcon className="pi pi-search" />
+          <InputText type="search" onInput={(e) => setGlobalFilter(e.target.value)} placeholder="Global Search" />
+        </IconField>
       </div>
-  );
+    </div>
+    )} 
+    let header = getHeader()
   const actionTemplate = (key) => {
   return (
     <div className="flex flex-wrap gap-2">
