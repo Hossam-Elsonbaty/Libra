@@ -8,12 +8,20 @@ import { Button } from 'primereact/button';
 import { IconField } from 'primereact/iconfield';
 import { InputIcon } from 'primereact/inputicon';
 import { InputText } from 'primereact/inputtext';
+import { toast,ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import axios from 'axios';
 export default function ContainerMain() {
   const libraToken= localStorage.getItem( "libraToken");
   const [globalFilter, setGlobalFilter] = useState('');
   const [products, setProducts] = useState([]);
   const [expandedRows, setExpandedRows] = useState(null);
+  const notifyFirstWeight = () => {
+    toast.success("تم تسجيل الوزنة الاولى");
+  };
+  const notifySecondWeight = () => {
+    toast.success("تم تسجيل الوزنة الثانية");
+  };
   useEffect(() => {
     getAgentData();
   }, []);
@@ -56,8 +64,8 @@ export default function ContainerMain() {
                 <Column field="SECOUND_time" header="وقت الوزنه الثانيه" sortable></Column>
                 <Column field="customer" header="صافي كمية الميزان" sortable></Column>
                 <Column field="qyt_wight" header="كمية الوزن" sortable></Column>
-                <Column body={(nodeData)=>actionTemplate(nodeData)} headerClassName="w-10rem"></Column>
-                <Column body={(nodeData)=>actionTemplate2(nodeData)} headerClassName="w-10rem"></Column>
+                <Column body={(rowData)=>actionTemplate(rowData)} headerClassName="w-10rem"></Column>
+                <Column body={(rowData)=>actionTemplate2(rowData)} headerClassName="w-10rem"></Column>
             </DataTable>
         </div>
     );
@@ -76,68 +84,107 @@ export default function ContainerMain() {
     </div>
     )} 
     let header = getHeader()
-  const actionTemplate = (key) => {
+    const actionTemplate = (rowData) => {
+      const handleButtonClick = () => {
+        axios.get('http://127.0.0.1:8000/data-scale-read1',{headers:{
+          'Authorization': `Token ${libraToken}`
+          },params: {
+                    item_code:rowData.item_code,
+                    BRAN_CODE:rowData.BRAN_CODE,
+                    customer_id:rowData.customer_id,
+                    sales_order_number:rowData.sales_order_number,
+                    date_card:rowData.date_card
+                  }})
+        .then((response) => {
+          // Create a new array of products with updated values
+          const updatedProducts = products.map((product) => {
+            if (product.sales_order_number === rowData.sales_order_number) {
+              const updatedOrders = product.orders.map((order) => {
+                if (order.object_index === rowData.object_index) {
+                  return {
+                    ...order,
+                    frist_wight: response.data.firstWeight,
+                    frist_time: response.data.firstWeighingTime,
+                    qyt_wight: response.data.firstWeight
+                  };
+                }
+                return order;
+              });
+              return {
+                ...product,
+                orders: updatedOrders,
+              };
+            }
+            return product;
+          });
+          // Update the products state
+          setProducts(updatedProducts);
+          notifyFirstWeight();
+        })
+        .catch((err)=>{
+          console.log(err);
+        })
+      };
+    
+      return (
+        <div className="flex flex-wrap gap-2">
+          <Button type="button" rounded onClick={handleButtonClick}>الوزنه الاولي</Button>
+        </div>
+      )
+    };
+    const actionTemplate2 = (rowData) => {
+      const handleButtonClick = () => {
+        axios.get('http://127.0.0.1:8000/data-scale-read2',{headers:{
+          'Authorization': `Token ${libraToken}`
+          },
+          params: {
+            item_code:rowData.item_code,
+            BRAN_CODE:rowData.BRAN_CODE,
+            customer_id:rowData.customer_id,
+            sales_order_number:rowData.sales_order_number,
+            date_card:rowData.date_card
+          }
+        })
+        .then((response) => {
+          // Create a new array of products with updated values
+          const updatedProducts = products.map((product) => {
+            if (product.sales_order_number === rowData.sales_order_number) {
+              const updatedOrders = product.orders.map((order) => {
+                if (order.object_index === rowData.object_index) {
+                  console.log(order.frist_wight,response.data.secondWeight)
+                  return {
+                    ...order,
+                    SECOUND_WIGHT: response.data.secondWeight,
+                    SECOUND_time: response.data.secondWeighingTime,
+                    qyt_wight: Number(order.frist_wight)-Number(response.data.secondWeight)
+                  };
+                }
+                return order;
+              });
+              return {
+                ...product,
+                orders: updatedOrders,
+              };
+            }
+            return product;
+          });
+          // Update the products state
+          setProducts(updatedProducts);
+          notifySecondWeight();
+        })
+        .catch((err)=>{
+          console.log(err);
+        })
+      };
   return (
     <div className="flex flex-wrap gap-2">
-      <Button type="button"   rounded onClick={()=>{
-        console.log(key)
-        setProducts([
-          {
-              id: '1000',
-              code: 'f230fh0g3',
-              name: 'Bamboo Watch',
-              description: 'Product Description',
-              price: 65,
-              category: 'Accessories',
-              quantity: 24,
-              orders: [
-                  {
-                      id: '1000-0',
-                      productCode: 'f230fh0g3',
-                      date: '2090-09-13',
-                      amount: 65,
-                      quantity: 1,
-                      customer: 'David James',
-                  },
-                  {
-                      id: '1000-1',
-                      productCode: 'f230fh0g3',
-                      date: '2020-05-14',
-                      amount: 130,
-                      quantity: 2,
-                      customer: 'Leon Rodrigues',
-                  },
-                  {
-                      id: '1000-2',
-                      productCode: 'f230fh0g3',
-                      date: '2019-01-04',
-                      amount: 65,
-                      quantity: 1,
-                      customer: 'Juan Alejandro',
-                  },
-                  {
-                      id: '1000-3',
-                      productCode: 'f230fh0g3',
-                      date: '2020-09-13',
-                      amount: 195,
-                      quantity: 3,
-                      customer: 'Claire Morrow',
-                  }
-              ]
-          },])
-      }}>الوزنه الاولي</Button>
-    </div>
-  )
-  };
-  const actionTemplate2 = (key) => {
-  return (
-    <div className="flex flex-wrap gap-2">
-      <Button type="button" severity="success" rounded>الوزنه الثانيه</Button>
+      <Button type="button" severity="success" rounded onClick={handleButtonClick}>الوزنه الثانيه</Button>
     </div>
   );
   };
   return (
     <>
+      <ToastContainer />
       <head>
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"/>
       </head>
