@@ -22,6 +22,9 @@ export default function ContainerMain() {
   const notifySecondWeight = () => {
     toast.success("تم تسجيل الوزنة الثانية");
   };
+  const notifyFailedWeight = () => {
+    toast.warning("خطأ في قراءة الوزنة ");
+  };
   useEffect(() => {
     getAgentData();
   }, []);
@@ -123,6 +126,7 @@ export default function ContainerMain() {
         })
         .catch((err)=>{
           console.log(err);
+          notifyFailedWeight();
         })
       };
     
@@ -174,6 +178,7 @@ export default function ContainerMain() {
         })
         .catch((err)=>{
           console.log(err);
+          notifyFailedWeight();
         })
       };
   return (

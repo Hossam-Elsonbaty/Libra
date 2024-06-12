@@ -298,6 +298,7 @@
 .sideBar {
   width: 16%;
   margin-left: 2%;
+  position: sticky;
 }
 
 .logo-container {
