@@ -696,6 +696,12 @@ main{
   border: 1px solid #f4f4f5;
   border-width: 0 0 1px 0;
   padding: .25rem;
+  .p-button {
+    font-size: 12px;
+    padding: 5px;
+    width: -moz-max-content;
+    width: max-content;
+  }
 }
 .p-column-header-content{
   width: max-content;
